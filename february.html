@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>January Calendar</title>
+    <title>February Calendar</title>
     <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
@@ -13,9 +13,9 @@
     <div class="calendar">
         <div class="month">
             <ul>
-                <li class="prev"><a href="december.html">&#10094;</a></li>
-                <li class="next"><a href="february.html">&#10095;</a></li>
-                <li>January<br><span style="font-size:18px">2025</span></li>
+                <li class="prev"><a href="january.html">&#10094;</a></li>
+                <li class="next"><a href="march.html">&#10095;</a></li>
+                <li>February<br><span style="font-size:18px">2025</span></li>
             </ul>
         </div>
         <ul class="weekdays">
@@ -28,7 +28,9 @@
             <li>Su</li>
         </ul>
         <ul class="days">
-            <li></li><li></li><li></li><li>1</li><li>2</li><li>3</li><li>4</li>
+            <li></li><li></li><li></li><li></li>
+            <li class="day" onclick="toggleForm(this)">1</li><li class="day" onclick="toggleForm(this)">2</li>
+            <li class="day" onclick="toggleForm(this)">3</li><li class="day" onclick="toggleForm(this)">4</li>
             <li class="day" onclick="toggleForm(this)">5</li><li class="day" onclick="toggleForm(this)">6</li>
             <li class="day" onclick="toggleForm(this)">7</li><li class="day" onclick="toggleForm(this)">8</li>
             <li class="day" onclick="toggleForm(this)">9</li><li class="day" onclick="toggleForm(this)">10</li>
@@ -41,8 +43,6 @@
             <li class="day" onclick="toggleForm(this)">23</li><li class="day" onclick="toggleForm(this)">24</li>
             <li class="day" onclick="toggleForm(this)">25</li><li class="day" onclick="toggleForm(this)">26</li>
             <li class="day" onclick="toggleForm(this)">27</li><li class="day" onclick="toggleForm(this)">28</li>
-            <li class="day" onclick="toggleForm(this)">29</li><li class="day" onclick="toggleForm(this)">30</li>
-            <li class="day" onclick="toggleForm(this)">31</li>
         </ul>
     </div>
 
