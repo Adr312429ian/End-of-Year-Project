@@ -1,4 +1,4 @@
-body {
+\body {
   font-family: Georgia, serif;
   background-color: lightblue;
   margin: 0;
@@ -87,15 +87,3 @@ header h1 {
   font-weight: bold;
 }
 
-.days li {
-  background-color: #f9f9f9;
-  cursor: pointer;
-}
-
-.days li:hover {
-  background-color: #ddd;
-}
-
-.booked {
-  background-color: #ffcccc;
-}

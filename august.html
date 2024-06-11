@@ -28,47 +28,12 @@
             <li>Su</li>
         </ul>
         <ul class="days">
-            <li></li><li></li><li></li><li>1</li>
-            <li class="day" onclick="toggleForm(this)">2</li><li class="day" onclick="toggleForm(this)">3</li>
-            <li class="day" onclick="toggleForm(this)">4</li><li class="day" onclick="toggleForm(this)">5</li>
-            <li class="day" onclick="toggleForm(this)">6</li><li class="day" onclick="toggleForm(this)">7</li>
-            <li class="day" onclick="toggleForm(this)">8</li><li class="day" onclick="toggleForm(this)">9</li>
-            <li class="day" onclick="toggleForm(this)">10</li><li class="day" onclick="toggleForm(this)">11</li>
-            <li class="day" onclick="toggleForm(this)">12</li><li class="day" onclick="toggleForm(this)">13</li>
-            <li class="day" onclick="toggleForm(this)">14</li><li class="day" onclick="toggleForm(this)">15</li>
-            <li class="day" onclick="toggleForm(this)">16</li><li class="day" onclick="toggleForm(this)">17</li>
-            <li class="day" onclick="toggleForm(this)">18</li><li class="day" onclick="toggleForm(this)">19</li>
-            <li class="day" onclick="toggleForm(this)">20</li><li class="day" onclick="toggleForm(this)">21</li>
-            <li class="day" onclick="toggleForm(this)">22</li><li class="day" onclick="toggleForm(this)">23</li>
-            <li class="day" onclick="toggleForm(this)">24</li><li class="day" onclick="toggleForm(this)">25</li>
-            <li class="day" onclick="toggleForm(this)">26</li><li class="day" onclick="toggleForm(this)">27</li>
-            <li class="day" onclick="toggleForm(this)">28</li><li class="day" onclick="toggleForm(this)">29</li>
-            <li class="day" onclick="toggleForm(this)">30</li><li class="day" onclick="toggleForm(this)">31</li>
+            <li></li><li></li><li></li><li>1</li><li>2</li><li>3</li><li>4</li>
+            <li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li>
+            <li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li>
+            <li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li>
+            <li>26</li><li>27</li><li>28</li><li>29</li><li>30</li><li>31</li>
         </ul>
     </div>
-
-    <div id="form-popup" class="form-popup">
-        <form class="form-container">
-            <h2>Book an Appointment</h2>
-            <label for="time"><b>Time</b></label>
-            <input type="time" name="time" required>
-            <label for="name"><b>Name</b></label>
-            <input type="text" name="name" required>
-            <button type="submit" class="btn">Book</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-    </div>
-
-    <script>
-        function toggleForm(dayElement) {
-            const formPopup = document.getElementById('form-popup');
-            formPopup.style.display = 'block';
-        }
-
-        function closeForm() {
-            const formPopup = document.getElementById('form-popup');
-            formPopup.style.display = 'none';
-        }
-    </script>
 </body>
 </html>
