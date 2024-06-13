@@ -29,52 +29,44 @@
         </ul>
         <ul class="days">
             <li></li><li></li><li></li><li>1</li><li>2</li><li>3</li><li>4</li>
-            <li class="day" onclick="toggleForm(this)">5</li><li class="day" onclick="toggleForm(this)">6</li>
-            <li class="day" onclick="toggleForm(this)">7</li><li class="day" onclick="toggleForm(this)">8</li>
-            <li class="day" onclick="toggleForm(this)">9</li><li class="day" onclick="toggleForm(this)">10</li>
-            <li class="day" onclick="toggleForm(this)">11</li><li class="day" onclick="toggleForm(this)">12</li>
-            <li class="day" onclick="toggleForm(this)">13</li><li class="day" onclick="toggleForm(this)">14</li>
-            <li class="day" onclick="toggleForm(this)">15</li><li class="day" onclick="toggleForm(this)">16</li>
-            <li class="day" onclick="toggleForm(this)">17</li><li class="day" onclick="toggleForm(this)">18</li>
-            <li class="day" onclick="toggleForm(this)">19</li><li class="day" onclick="toggleForm(this)">20</li>
-            <li class="day" onclick="toggleForm(this)">21</li><li class="day" onclick="toggleForm(this)">22</li>
-            <li class="day" onclick="toggleForm(this)">23</li><li class="day" onclick="toggleForm(this)">24</li>
-            <li class="day" onclick="toggleForm(this)">25</li><li class="day" onclick="toggleForm(this)">26</li>
-            <li class="day" onclick="toggleForm(this)">27</li><li class="day" onclick="toggleForm(this)">28</li>
-            <li class="day" onclick="toggleForm(this)">29</li><li class="day" onclick="toggleForm(this)">30</li>
-            <li class="day" onclick="toggleForm(this)">31</li>
-=======
-            <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li>
-            <li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li>
-            <li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li>
-            <li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li>
-            <li>29</li><li>30</li><li>31</li>
->>>>>>> Stashed changes
+            <li class="day" onclick="showOptions(this, '2025-01-05')">5</li><li class="day" onclick="showOptions(this, '2025-01-06')">6</li>
+            <li class="day" onclick="showOptions(this, '2025-01-07')">7</li><li class="day" onclick="showOptions(this, '2025-01-08')">8</li>
+            <li class="day" onclick="showOptions(this, '2025-01-09')">9</li><li class="day" onclick="showOptions(this, '2025-01-10')">10</li>
+            <li class="day" onclick="showOptions(this, '2025-01-11')">11</li><li class="day" onclick="showOptions(this, '2025-01-12')">12</li>
+            <li class="day" onclick="showOptions(this, '2025-01-13')">13</li><li class="day" onclick="showOptions(this, '2025-01-14')">14</li>
+            <li class="day" onclick="showOptions(this, '2025-01-15')">15</li><li class="day" onclick="showOptions(this, '2025-01-16')">16</li>
+            <li class="day" onclick="showOptions(this, '2025-01-17')">17</li><li class="day" onclick="showOptions(this, '2025-01-18')">18</li>
+            <li class="day" onclick="showOptions(this, '2025-01-19')">19</li><li class="day" onclick="showOptions(this, '2025-01-20')">20</li>
+            <li class="day" onclick="showOptions(this, '2025-01-21')">21</li><li class="day" onclick="showOptions(this, '2025-01-22')">22</li>
+            <li class="day" onclick="showOptions(this, '2025-01-23')">23</li><li class="day" onclick="showOptions(this, '2025-01-24')">24</li>
+            <li class="day" onclick="showOptions(this, '2025-01-25')">25</li><li class="day" onclick="showOptions(this, '2025-01-26')">26</li>
+            <li class="day" onclick="showOptions(this, '2025-01-27')">27</li><li class="day" onclick="showOptions(this, '2025-01-28')">28</li>
+            <li class="day" onclick="showOptions(this, '2025-01-29')">29</li><li class="day" onclick="showOptions(this, '2025-01-30')">30</li>
+            <li class="day" onclick="showOptions(this, '2025-01-31')">31</li>
         </ul>
     </div>
 
     <div id="form-popup" class="form-popup">
-        <form class="form-container">
+        <form class="form-container" id="appointmentForm">
             <h2>Book an Appointment</h2>
             <label for="time"><b>Time</b></label>
-            <input type="time" name="time" required>
+            <input type="time" id="time" name="time" required>
             <label for="name"><b>Name</b></label>
-            <input type="text" name="name" required>
+            <input type="text" id="name" name="name" required>
+            <input type="hidden" id="appointmentDate" name="appointmentDate">
             <button type="submit" class="btn">Book</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
     </div>
 
-    <script>
-        function toggleForm(dayElement) {
-            const formPopup = document.getElementById('form-popup');
-            formPopup.style.display = 'block';
-        }
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAppointmentModal()">&times;</span>
+            <h2>Appointments for <span id="modalDate"></span></h2>
+            <ul id="appointmentList"></ul>
+        </div>
+    </div>
 
-        function closeForm() {
-            const formPopup = document.getElementById('form-popup');
-            formPopup.style.display = 'none';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
