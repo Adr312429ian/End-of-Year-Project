@@ -1,70 +1,73 @@
-// script.js
-
-const appointments = {};
-
-function showOptions(dayElement, date) {
-    if (confirm("Do you want to view appointments or book a new one? Click OK to view, Cancel to book.")) {
-        showAppointments(date);
-    } else {
-        toggleForm(dayElement, date);
-    }
+function navigateToMonth(month) {
+    window.location.href = month;
 }
 
-function toggleForm(dayElement, date) {
-    const formPopup = document.getElementById('form-popup');
+function showOptions(element, date) {
+    const optionsPopup = document.getElementById('optionsPopup');
+    const actionSelect = document.getElementById('actionSelect');
+    actionSelect.value = '';
+    optionsPopup.style.display = 'block';
+    optionsPopup.dataset.date = date;
+}
+
+function closeOptions() {
+    const optionsPopup = document.getElementById('optionsPopup');
+    optionsPopup.style.display = 'none';
+}
+
+function performAction() {
+    const actionSelect = document.getElementById('actionSelect');
+    const selectedAction = actionSelect.value;
+    const date = document.getElementById('optionsPopup').dataset.date;
+
+    if (selectedAction === 'book') {
+        openForm(date);
+    } else if (selectedAction === 'view') {
+        openAppointmentModal(date);
+    }
+    closeOptions();
+}
+
+function openForm(date) {
+    document.getElementById('form-popup').style.display = 'block';
     document.getElementById('appointmentDate').value = date;
-    formPopup.style.display = 'block';
 }
 
 function closeForm() {
-    const formPopup = document.getElementById('form-popup');
-    formPopup.style.display = 'none';
+    document.getElementById('form-popup').style.display = 'none';
 }
 
-document.getElementById('appointmentForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const date = document.getElementById('appointmentDate').value;
-    const time = document.getElementById('time').value;
-    const name = document.getElementById('name').value;
-
-    if (!appointments[date]) {
-        appointments[date] = [];
-    }
-
-    appointments[date].push({ time, name });
-
-    document.getElementById('appointmentForm').reset();
-    closeForm();
-    showAppointments(date);
-});
-
-function showAppointments(date) {
+function openAppointmentModal(date) {
     const modal = document.getElementById('appointmentModal');
-    const appointmentList = document.getElementById('appointmentList');
     const modalDate = document.getElementById('modalDate');
+    const appointmentList = document.getElementById('appointmentList');
 
     modalDate.textContent = date;
-    appointmentList.innerHTML = '';
+    appointmentList.innerHTML = ''; // Clear existing appointments
 
-    if (appointments[date]) {
-        appointments[date].forEach(appointment => {
-            const li = document.createElement('li');
-            li.textContent = `${appointment.time} - ${appointment.name}`;
-            appointmentList.appendChild(li);
-        });
-    }
+    const appointments = JSON.parse(localStorage.getItem(date) || '[]');
+    appointments.forEach(appointment => {
+        const li = document.createElement('li');
+        li.textContent = `${appointment.time} - ${appointment.name}`;
+        appointmentList.appendChild(li);
+    });
 
     modal.style.display = 'block';
 }
 
 function closeAppointmentModal() {
-    const modal = document.getElementById('appointmentModal');
-    modal.style.display = 'none';
+    document.getElementById('appointmentModal').style.display = 'none';
 }
 
-window.onclick = function (event) {
-    const modal = document.getElementById('appointmentModal');
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-}
+document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const date = document.getElementById('appointmentDate').value;
+    const time = document.getElementById('time').value;
+    const name = document.getElementById('name').value;
+
+    const appointments = JSON.parse(localStorage.getItem(date) || '[]');
+    appointments.push({ time, name });
+    localStorage.setItem(date, JSON.stringify(appointments));
+
+    closeForm();
+});

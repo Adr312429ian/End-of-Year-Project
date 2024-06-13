@@ -13,8 +13,8 @@
     <div class="calendar">
         <div class="month">
             <ul>
-                <li class="prev"><a href="january.html">&#10094;</a></li>
-                <li class="next"><a href="march.html">&#10095;</a></li>
+                <li class="prev" onclick="navigateToMonth('january.html')">&#10094;</li>
+                <li class="next" onclick="navigateToMonth('march.html')">&#10095;</li>
                 <li>February<br><span style="font-size:18px">2025</span></li>
             </ul>
         </div>
@@ -28,46 +28,58 @@
             <li>Su</li>
         </ul>
         <ul class="days">
-            <li></li><li></li><li></li><li></li>
-            <li class="day" onclick="toggleForm(this)">1</li><li class="day" onclick="toggleForm(this)">2</li>
-            <li class="day" onclick="toggleForm(this)">3</li><li class="day" onclick="toggleForm(this)">4</li>
-            <li class="day" onclick="toggleForm(this)">5</li><li class="day" onclick="toggleForm(this)">6</li>
-            <li class="day" onclick="toggleForm(this)">7</li><li class="day" onclick="toggleForm(this)">8</li>
-            <li class="day" onclick="toggleForm(this)">9</li><li class="day" onclick="toggleForm(this)">10</li>
-            <li class="day" onclick="toggleForm(this)">11</li><li class="day" onclick="toggleForm(this)">12</li>
-            <li class="day" onclick="toggleForm(this)">13</li><li class="day" onclick="toggleForm(this)">14</li>
-            <li class="day" onclick="toggleForm(this)">15</li><li class="day" onclick="toggleForm(this)">16</li>
-            <li class="day" onclick="toggleForm(this)">17</li><li class="day" onclick="toggleForm(this)">18</li>
-            <li class="day" onclick="toggleForm(this)">19</li><li class="day" onclick="toggleForm(this)">20</li>
-            <li class="day" onclick="toggleForm(this)">21</li><li class="day" onclick="toggleForm(this)">22</li>
-            <li class="day" onclick="toggleForm(this)">23</li><li class="day" onclick="toggleForm(this)">24</li>
-            <li class="day" onclick="toggleForm(this)">25</li><li class="day" onclick="toggleForm(this)">26</li>
-            <li class="day" onclick="toggleForm(this)">27</li><li class="day" onclick="toggleForm(this)">28</li>
+            <li></li><li></li><li><li></li><li></li></li>
+            <li class="day" onclick="showOptions(this, '2025-02-01')">1</li><li class="day" onclick="showOptions(this, '2025-02-02')">2</li>
+            <li class="day" onclick="showOptions(this, '2025-02-03')">3</li><li class="day" onclick="showOptions(this, '2025-02-04')">4</li>
+            <li class="day" onclick="showOptions(this, '2025-02-05')">5</li><li class="day" onclick="showOptions(this, '2025-02-06')">6</li>
+            <li class="day" onclick="showOptions(this, '2025-02-07')">7</li><li class="day" onclick="showOptions(this, '2025-02-08')">8</li>
+            <li class="day" onclick="showOptions(this, '2025-02-09')">9</li><li class="day" onclick="showOptions(this, '2025-02-10')">10</li>
+            <li class="day" onclick="showOptions(this, '2025-02-11')">11</li><li class="day" onclick="showOptions(this, '2025-02-12')">12</li>
+            <li class="day" onclick="showOptions(this, '2025-02-13')">13</li><li class="day" onclick="showOptions(this, '2025-02-14')">14</li>
+            <li class="day" onclick="showOptions(this, '2025-02-15')">15</li><li class="day" onclick="showOptions(this, '2025-02-16')">16</li>
+            <li class="day" onclick="showOptions(this, '2025-02-17')">17</li><li class="day" onclick="showOptions(this, '2025-02-18')">18</li>
+            <li class="day" onclick="showOptions(this, '2025-02-19')">19</li><li class="day" onclick="showOptions(this, '2025-02-20')">20</li>
+            <li class="day" onclick="showOptions(this, '2025-02-21')">21</li><li class="day" onclick="showOptions(this, '2025-02-22')">22</li>
+            <li class="day" onclick="showOptions(this, '2025-02-23')">23</li><li class="day" onclick="showOptions(this, '2025-02-24')">24</li>
+            <li class="day" onclick="showOptions(this, '2025-02-25')">25</li><li class="day" onclick="showOptions(this, '2025-02-26')">26</li>
+            <li class="day" onclick="showOptions(this, '2025-02-27')">27</li><li class="day" onclick="showOptions(this, '2025-02-28')">28</li>
         </ul>
     </div>
 
     <div id="form-popup" class="form-popup">
-        <form class="form-container">
+        <form class="form-container" id="appointmentForm">
             <h2>Book an Appointment</h2>
             <label for="time"><b>Time</b></label>
-            <input type="time" name="time" required>
+            <input type="time" id="time" name="time" required>
             <label for="name"><b>Name</b></label>
-            <input type="text" name="name" required>
+            <input type="text" id="name" name="name" required>
+            <input type="hidden" id="appointmentDate" name="appointmentDate">
             <button type="submit" class="btn">Book</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
     </div>
 
-    <script>
-        function toggleForm(dayElement) {
-            const formPopup = document.getElementById('form-popup');
-            formPopup.style.display = 'block';
-        }
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAppointmentModal()">&times;</span>
+            <h2>Appointments for <span id="modalDate"></span></h2>
+            <ul id="appointmentList"></ul>
+        </div>
+    </div>
 
-        function closeForm() {
-            const formPopup = document.getElementById('form-popup');
-            formPopup.style.display = 'none';
-        }
-    </script>
+    <div id="optionsPopup" class="form-popup">
+        <div class="form-container">
+            <h2>Select an Action</h2>
+            <select id="actionSelect">
+                <option value="">Select...</option>
+                <option value="book">Book an Appointment</option>
+                <option value="view">View Appointments</option>
+            </select>
+            <button type="button" class="btn" onclick="performAction()">Go</button>
+            <button type="button" class="btn cancel" onclick="closeOptions()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

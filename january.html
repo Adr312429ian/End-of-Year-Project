@@ -13,8 +13,8 @@
     <div class="calendar">
         <div class="month">
             <ul>
-                <li class="prev"><a href="december.html">&#10094;</a></li>
-                <li class="next"><a href="february.html">&#10095;</a></li>
+                <li class="prev" onclick="navigateToMonth('december.html')">&#10094;</li>
+                <li class="next" onclick="navigateToMonth('february.html')">&#10095;</li>
                 <li>January<br><span style="font-size:18px">2025</span></li>
             </ul>
         </div>
@@ -28,7 +28,9 @@
             <li>Su</li>
         </ul>
         <ul class="days">
-            <li></li><li></li><li></li><li>1</li><li>2</li><li>3</li><li>4</li>
+            <li></li><li></li>
+            <li class="day" onclick="showOptions(this, '2025-01-01')">1</li><li class="day" onclick="showOptions(this, '2025-01-02')">2</li>
+            <li class="day" onclick="showOptions(this, '2025-01-03')">3</li><li class="day" onclick="showOptions(this, '2025-01-04')">4</li>
             <li class="day" onclick="showOptions(this, '2025-01-05')">5</li><li class="day" onclick="showOptions(this, '2025-01-06')">6</li>
             <li class="day" onclick="showOptions(this, '2025-01-07')">7</li><li class="day" onclick="showOptions(this, '2025-01-08')">8</li>
             <li class="day" onclick="showOptions(this, '2025-01-09')">9</li><li class="day" onclick="showOptions(this, '2025-01-10')">10</li>
@@ -64,6 +66,19 @@
             <span class="close" onclick="closeAppointmentModal()">&times;</span>
             <h2>Appointments for <span id="modalDate"></span></h2>
             <ul id="appointmentList"></ul>
+        </div>
+    </div>
+
+    <div id="optionsPopup" class="form-popup">
+        <div class="form-container">
+            <h2>Select an Action</h2>
+            <select id="actionSelect">
+                <option value="">Select...</option>
+                <option value="book">Book an Appointment</option>
+                <option value="view">View Appointments</option>
+            </select>
+            <button type="button" class="btn" onclick="performAction()">Go</button>
+            <button type="button" class="btn cancel" onclick="closeOptions()">Close</button>
         </div>
     </div>
 
